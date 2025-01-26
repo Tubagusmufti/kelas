@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/output.css">
+     <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+            document.documentElement.classList.add('dark');
+        }else{
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <title>Galery</title>
+</head>
+<body class="dark:bg-slate-800 dark:text-slate">
+    <div class="flex justify-start ml-6 sl:mr-9  lg:ml-10 mt-7"><a href="../index.html" class="font-bold dark:text-white">← back</a></div>
+
+    <div class="container">
+        <div class="w-full px-4">
+            <div class="max-w-xl mx-auto text-center mb-16">
+                <h4 class="font-semibold text-lg text-prim mb-2">My Galery</h4>
+                <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">Foto terbaru</h2>
+                <p class="font-medium text-md text-abu md:text-lg">Hi semua! 🌟 Ada kabar seru nih, kita baru aja update galeri foto terbaru yang nggak boleh                          ketinggalan! 📸✨ Yuk, langsung aja merapat dan seru-seruan bareng.</p>
+            </div>
+        </div>
+        <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 mx-auto">
+            <div class="mb-12 p-4 md:w-1/2 group">
+                <div class="rounded-md shadow-md overflow-hidden ">
+                    <img src="img/guru1.jpg" alt="abstrak" width="w-full" class="group-hover:scale-105 transition-all duration-500">
+                </div>
+                <h3 class="font-semibold text-haikal mt-5 mb-3 dark:text-white">Selamat Hari Guru</h3>
+                <p class="font-semibold text-base text-abu ">Hari Guru adalah momen istimewa untuk menghargai dedikasi para pendidik. Terima kasih pada mereka                          yang dengan penuh semangat membimbing dan memberikan pengetahuan.
+                    <span id="dots">...</span>
+                        <span id="more" class="hidden font-semibold text-base text-abu">Para guru tidak hanya menyampaikan pelajaran, tetapi juga membentuk karakter                        dan nilai-nilai kehidupan. Selamat Hari Guru untuk mereka yang menjadi pilar pendidikan dan mendedikasikan hidupnya untuk persiapan masa depan                        generasi mendatang.
+                        <span>
+                </p>
+                <button onclick="toggleText()" id="button"
+                    class="mt-3 px-5 py-2 text-abu underline">Read
+                    more</button>
+            </div>
+            <div class="mb-12 p-4 md:w-1/2 group">
+                <div class="rounded-md shadow-md overflow-hidden ">
+                    <img src="img/91.jpg" alt="abstrak" width="w-full" class="group-hover:scale-105 transition-all duration-500">
+                </div>
+                <h3 class="font-semibold text-haikal mt-5 mb-3 dark:text-white">Foto Bersama</h3>
+                <p class="font-semibold text-base text-abu">Bersama teman-teman terbaik, momen kebahagiaan tercipta. Senyuman tulus dan keceriaan menghiasi wajah                      kami di dalam foto ini. Lokasi yang penuh kenangan membuat momen ini begitu istimewa.
+                    <span id="dots1">...</span>
+                        <span id="more1" class="hidden font-semibold text-base text-abu">Di antara canda tawa, kita mengejar kebahagiaan, menciptakan memorabilia                               indah yang akan dikenang selamanya. Teman sejati adalah kilas balik yang senantiasa hangat, dan bersama-sama, kita menuliskan kisah                                   persahabatan yang tak terlupakan. 🌟📸 #MomenTakTerlupakan #SahabatSelamanya
+                        <span>
+                </p>
+                <button onclick="toggleText1()" id="button1"
+                    class="mt-3 px-5 py-2 text-abu underline">Read
+                    more</button>
+            </div>
+            <div class="mb-12 p-4 md:w-1/2 group">
+                <div class="rounded-md shadow-md overflow-hidden ">
+                    <img src="img/1c.jpeg" alt="jembatan" width="w-full" class="group-hover:scale-105 transition-all duration-500">
+                </div>
+                <h3 class="font-semibold text-haikal mt-5 mb-3 dark:text-white">jembatan.</h3>
+                <p class="font-semibold text-base text-abu">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, molestiae! Porro, cupiditate.</p>
+            </div>
+            <div class="mb-12 p-4 md:w-1/2 group">
+                <div class="rounded-md shadow-md overflow-hidden dark:text-white">
+                    <img src="img/1d.jpeg" alt="setup" width="w-full" class="group-hover:scale-105 transition-all duration-500">
+                </div>
+                <h3 class="font-semibold text-haikal mt-5 mb-3 dark:text-white">setup.</h3>
+                <p class="font-semibold text-base text-abu">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, molestiae! Porro, cupiditate.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-64 p-2 font-inter grid grid-cols-2
+    gap-2 md:grid-cols-4 md:p-4 ">
+       <h2 class="h-15 text-xl font-semibold text-slate-700 md:flex"><span class="self-end dark:text-white">welcome to XII TJKT 3</span></h2>
+       <div class="h-15 text-lg font-bold text-slate-700  md:flex"><span class=" self-end dark:text-white">@XII TJKT 3</span></div>
+
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/1.jpeg) ;"></div>
+       </div>
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/2.jpeg) ;"></div>
+       </div>
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/3.jpeg) ;"></div>
+       </div>
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/4.jpeg) ;"></div>
+       </div>
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/5.jpeg) ;"></div>
+       </div>
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/6.jpeg) ;"></div>
+       </div>
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/7.jpeg) ;"></div>
+       </div>
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/8.jpeg) ;"></div>
+       </div>
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/9.jpeg) ;"></div>
+       </div>
+       <div class="group grid-card">
+           <div class="card-components" style="background-image:url(./img/10.jpeg) ;"></div>
+       </div>
+   </div>
+
+
+
+ <script src="script.js"></script>
+ <script>
+        function toggleText() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var button = document.getElementById("button");
+
+            if (dots.classList.contains("hidden")) {
+                dots.classList.remove("hidden");
+                moreText.classList.add("hidden");
+                button.innerHTML = "Read more";
+            } else {
+                dots.classList.add("hidden");
+                moreText.classList.remove("hidden");
+                button.innerHTML = "Read less";
+            }
+        }
+
+        function toggleText1() {
+            var dots = document.getElementById("dots1");
+            var moreText = document.getElementById("more1");
+            var button = document.getElementById("button1");
+
+            if (dots.classList.contains("hidden")) {
+                dots.classList.remove("hidden");
+                moreText.classList.add("hidden");
+                button.innerHTML = "Read more";
+            } else {
+                dots.classList.add("hidden");
+                moreText.classList.remove("hidden");
+                button.innerHTML = "Read less";
+            }
+        }
+    </script>
+</body>
+</html>
