@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" sizes="16x16"  href="../favicons/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/output.css">
+     <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+            document.documentElement.classList.add('dark');
+        }else{
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <title>Members</title>
+</head>
+<body class="dark:bg-slate-800 dark:text-slate">
+
+    <div class="flex justify-start ml-6 sl:mr-9  lg:ml-10 mt-7"><a href="../index.html" class="font-bold dark:text-white">← back</a></div>
+    
+    <div class="container">
+        <div class="w-full px-4 mt-20">
+            <div class="max-w-xl mx-auto text-center mb-16">
+                <h4 class="font-semibold text-lg text-prim mb-2">My Member</h4>
+                <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">Member XII TJKT 3</h2>
+                <p class="font-medium text-md text-abu md:text-lg">Hai! Selamat datang di Galeri Foto Anggota XII TJKT 3! 🌟 Ayo kita lihat bersama foto dari anggota                   XII TJKT 3.</p>
+            </div>
+        </div>
+
+        <div class="mt-32 p-2 font-inter grid grid-cols-2
+        gap-2 md:grid-cols-4 md:p-4 ">
+           <h2 class="h-15 text-xl font-semibold text-slate-700 md:flex"><span class="self-end dark:text-white">Member XII TJKT 3</span></h2>
+           <div class="h-15 text-lg font-bold text-slate-700  md:flex"><span class=" self-end dark:text-white">@XII TJKT 3</span>
+        </div>
+    
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/kyla.jpg) ;"></div>
+           </div>
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/aran.jpg) ;"></div>
+           </div>
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/nur.jpg) ;"></div>
+           </div>
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/dira.jpg) ;"></div>
+           </div>
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/nadia.jpg) ;"></div>
+           </div>
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/ajeng.jpg) ;"></div>
+           </div>
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/7.jpeg) ;"></div>
+           </div>
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/8.jpeg) ;"></div>
+           </div>
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/9.jpeg) ;"></div>
+           </div>
+           <div class="group grid-card add">
+               <div class="card-components" style="background-image:url(./img/10.jpeg) ;"></div>
+           </div>
+       </div>
+    </div>
+
+
+   
+
+
+
+ <script src="script.js"></script>
+</body>
+</html>

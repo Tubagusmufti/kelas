@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="public/css/output.css">
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicons/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <title>XII TJKT 3</title>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+            document.documentElement.classList.add('dark');
+        }else{
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <style>
+        .jadwal-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-in-out;
+            opacity: 0;
+            transition-delay: 0.1s;
+        }
+
+        .buka .jadwal-detail {
+            max-height: 1000px; /* Sesuaikan dengan nilai yang mencukupi */
+            opacity: 1;
+            transition-delay: 0.1s;
+        }
+
+        
+
+    </style>
+</head>
+<body class="">
+    
+    <!--header start-->
+    <header class="bg-transparent top-0 left-0 w-full items-center z-10 absolute flex">
+        <div class="container">
+            <div class="items-center justify-between relative flex">
+                <div class="px-4">
+                    <a href="#home" class="font-bold text-lg text-prim block py-6">XII TJKT 3</a>
+                </div>
+                <div class="flex items-center px-4">
+                    <button id="burger" name="burger" type="button" class="block absolute right-4 lg:hidden">
+                        <span class="burger-line transition duration-300 origin-top-left ease-in-out"></span>
+                        <span class="burger-line transition duration-300 ease-in-out"></span>
+                        <span class="burger-line transition duration-300 origin-bottom-left ease-in-out"></span>
+                    </button>
+                    <nav id="nav-menu" class="hidden py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none dark:bg-haikal dark:shadow-blue-500 lg:dark:bg-transparent absolute">
+                        <ul class="block lg:flex">
+                            <li class="group">
+                                <a href="#home" class="flex text-base text-black py-2 mx-8 group-hover:text-prim dark:text-white">Beranda</a>
+                            </li>
+                            <li class="group">
+                                <a href="#about" class="flex text-base text-black py-2 mx-8 group-hover:text-prim dark:text-white">Tentang saya</a>
+                            </li>
+                            <li class="group">
+                                <a href="#Members" class="flex text-base text-black py-2 mx-8 group-hover:text-prim dark:text-white">members</a>
+                            </li>
+                            <li class="group">
+                                <a href="#My Galery" class="flex text-base text-black py-2 mx-8 group-hover:text-prim dark:text-white">My Galery</a>
+                            </li>
+                            <li class="group">
+                                <a href="#jadwal" class="flex text-base text-black py-2 mx-8 group-hover:text-prim dark:text-white">Jadwal</a>
+                            </li>
+                            <li class="group">
+                                <a href="#contact" class="flex text-base text-black py-2 mx-8 group-hover:text-prim dark:text-white">Contact</a>
+                            </li>
+                            <li class="flex items-center pl-8 mt-3 lg:mt-0">
+                                <div class="flex">
+                                    <span class="mr-2 text-sm text-slate-500">Light</span>
+                                    <input type="checkbox" class="hidden" id="dark-toggle">
+                                    <label for="dark-toggle">
+                                        <div class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 p-1">
+                                            <div class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"></div>
+                                        </div>
+                                    </label>
+                                    <span class="ml-2 text-sm text-slate-500">Dark</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--header end-->
+
+
+    <!--hero section start -->
+    <section id="home" class="pt-36 dark:bg-haikal">
+        <div class="container">
+            <div class="flex flex-wrap">
+                <div class="w-full self-center px-6 lg:w-1/2">
+                    <h1 class="text-base font-semibold text-prim md:text-xl">Hallo semua 👋, saya <span class="block font-bold text-haikal text-4xl mt-1 lg:text-5xl dark:text-white">XII TJKT 3</span></h1>
+                    <h2 class="font-medium lg:text-2xl dark:text-white">students & families</h2>
+                    <p id="ty" class="font-medium text-slate-600 dark:text-slate-300 mt-6 mb-10 leading-relaxed">Sekolah itu mudah dan menyenangkan bukan.<span id="yt" class="ont-bold text-black dark:text-white">bukan!</span></p>
+
+                    <a href="https://www.instagram.com/xii_tjkt3/" class="ext-base font-semibold text-white bg-prim py-3 px-8 rounded-full hover:shadow-lg hover:bg-opacity-80 transition duration-300 ease-in-out">Hubungi saya</a>
+                </div>
+                <div class="group w-full self-end px-4 lg:w-1/2">
+                    <div class="relative mt-10 lg:mt-9 lg:right-0" id="ima-container">
+                        <img src="public/img/logo kelas/hitam.png" class="max-w-full mx-auto dark:hidden group-hover:scale-105 transition-all duration-500" alt="Light Image"id="image" width="350" height="350">
+                        <img src="public/img/logo kelas/putih.png" alt="Dark Image" id="dark-image" class="hidden dark:block max-w-full mx-auto group-hover:scale-105 transition-all duration-500" width="350" height="350">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--hero section end-->
+
+    <!--about section start-->
+    <section id="about" class="pt-36 pb-32 dark:bg-haikal">
+        <div class="container">
+            <div class="flex flex-wrap">
+                <div class="w-full px-4 mb-10 lg:w-1/2">
+                    <h4 class="font-bold uppercase text-prim text-lg mb-3">tentang saya</h4>
+                    <h2 class="font-bold text-black text-3xl mb-5 max-w-xl lg:text-4xl dark:text-white">yuk belajar</h2>
+                    <p class="font-medium text-base text-abu lg:text-lg">Kelas XII TJKT 3 adalah kelompok siswa yang bersemangat dalam menjelajahi dunia teknologi informasi, khususnya dalam pemahaman dan pengelolaan jaringan komputer. Dengan keragaman dan kolaborasi sebagai inti, kami aktif terlibat dalam proyek-proyek praktis yang memperkaya keterampilan teknis dan membangun komunitas belajar yang solid. Bersama-sama, kami bertekad untuk mencapai prestasi dan menghadapi tantangan di dunia teknologi.</p>
+                </div>
+                <div class="w-full px-4 lg:w-1/2">
+                    <h3 class="font-semibold text-black text-2xl mb-4 lg:text-3xl lg:pt-10 dark:text-white">mari berteman</h3>
+                    <p class="font-medium text-base text-abu mb-6 lg:text-lg">Mari bersama-sama membangun lingkungan yang positif dan inspiratif. Saya ingin mengajak                      Anda untuk bergabung, berbagi cerita, dan mungkin menemukan minat atau hobi yang sama. Jangan ragu untuk berinteraksi, bertanya, atau sekadar                         menyapa. Kita semua di sini untuk saling memotivasi dan memperkaya perjalanan bersama.</p>
+                    <div class="flex items-center" >
+                        <!--instagram start-->
+                        <a href="https://www.instagram.com/xii_tjkt3/" target="_blank" class="flex w-9 h-9 mr-3 rounded-full justify-center items-center border border-slate-300 hover:bg-prim dark:bg-white dark:hover:bg-prim hover:border-prim  hover:text-white">
+                            <svg class="full-current" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                        </a>
+                        <!--instagram end-->
+
+
+                        <!--tiktok satart-->
+                        <a href="" target="_blank" class="flex -9 h-9 mr-3 rounded-full  justify-center items-center border border-slate-300 hover:border-prim hover:bg-prim hover:text-white dark:bg-white dark:hover:bg-prim">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20"><title>TikTok</title><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                        </a>
+                        <!--tiktok end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--about section end-->
+
+    <!--member start-->
+    <section id="Members" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-700">
+        <div class="flex justify-end mr-6 sm:mr-9 lg:mr-10"><a href="public/member.html" class="font-bold dark:text-white">more →</a></div>
+        <div class="container">
+                <div class="w-full px-4">
+                    <div class="max-w-xl mx-auto text-center mb-16">
+                        <h4 class="font-semibold text-lg text-prim mb-2">My Member</h4>
+                        <h2 class="text-dark font-bold text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">Member XII TJKT 3</h2>
+                        <p class="font-medium text-md text-abu md:text-lg">
+                        Hai! Selamat datang di Galeri Foto Anggota XII TJKT 3! 🌟 Ayo kita lihat bersama foto dari anggota XII TJKT 3.
+                        </p>
+                    </div>
+                </div>
+            <div class="container mx-auto px-6 font-inter sm:flex sm:flex-wrap sm:gap-6 sm:justify-evenly justify-evenly">
+                <div class="rounded-md shadow-xl overflow-hidden mb-3 sm:mb-10 sm:w-64 md:w-80 md:h-80 lg:w-72 lg:h-80 bg-white group w-52 h-72 mx-auto dark:shadow-blue-500 add">
+                    <img src="public/img/bu nuning (2).png" class="w-full group-hover:scale-110 transition-all duration-500 object-center">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2 text-slate-700 ">BU NUNING</div>
+                        <p class="text-sm text-slate-600">Wali Kelas Dari XII TJKT 3</p>
+                    </div>
+                </div>
+            </div>
+            
+        
+    </section>
+    <!--member end-->
+
+
+    <!--galery start-->
+    <section id="My Galery" class="pt-36 pb-16 dark:bg-slate-800">
+        <div class="flex justify-end mr-6 sm:mr-9  lg:mr-10 "><a href="public/galeri.html" class="font-bold dark:text-white">more →</a></div>
+        <div class="container">
+            <div class="w-full px-4">
+                <div class="max-w-xl mx-auto text-center mb-16">
+                    <h4 class="font-semibold text-lg text-prim mb-2">My Galery</h4>
+                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl  dark:text-white">Foto terbaru</h2>
+                    <p class="font-medium text-md text-abu md:text-lg">Hi semua! 🌟 Ada kabar seru nih, kita baru aja update galeri foto terbaru yang nggak boleh                          ketinggalan! 📸✨ Yuk, langsung aja merapat dan seru-seruan bareng.</p>
+                </div>
+            </div>
+            <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 mx-auto">
+                <div class="mb-12 p-4 md:w-1/2 group">
+                    <div class="rounded-md shadow-md overflow-hidden add">
+                        <img src="public/img/guru1.jpg" alt="abstrak" width="w-full" class="group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <h3 class="font-semibold text-haikal mt-5 mb-3 dark:text-white">Selamat Hari Guru</h3>
+                    <p class="font-semibold text-base text-abu">Hari Guru adalah momen istimewa untuk menghargai dedikasi para pendidik. Terima kasih pada mereka                          yang dengan penuh semangat membimbing dan memberikan pengetahuan. 
+                        <span id="dots">...</span>
+                        <span id="more" class="hidden font-semibold text-base text-abu">Para guru tidak hanya menyampaikan pelajaran, tetapi juga membentuk karakter                        dan nilai-nilai kehidupan. Selamat Hari Guru untuk mereka yang menjadi pilar pendidikan dan mendedikasikan hidupnya untuk persiapan masa depan                        generasi mendatang.
+                        <span>
+                    </p>
+                    <button onclick="toggleText()" id="button"
+                    class="mt-3 px-5 py-2 text-abu underline">Read
+                    more</button>
+                </div>
+                <div class="mb-12 p-4 md:w-1/2 group">
+                    <div class="rounded-md shadow-md overflow-hidden add ">
+                        <img src="public/img/91.jpg" alt="abstrak" width="w-full" class="group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <h3 class="font-semibold text-haikal mt-5 mb-3 dark:text-white">Foto Bersama</h3>
+                    <p class="font-semibold text-base text-abu">Bersama teman-teman terbaik, momen kebahagiaan tercipta. Senyuman tulus dan keceriaan menghiasi wajah                      kami di dalam foto ini. Lokasi yang penuh kenangan membuat momen ini begitu istimewa.
+                        <span id="dots1">...</span>
+                        <span id="more1" class="hidden font-semibold text-base text-abu">Di antara canda tawa, kita mengejar kebahagiaan, menciptakan memorabilia                               indah yang akan dikenang selamanya. Teman sejati adalah kilas balik yang senantiasa hangat, dan bersama-sama, kita menuliskan kisah                                   persahabatan yang tak terlupakan. 🌟📸 #MomenTakTerlupakan #SahabatSelamanya
+                        <span>
+                    </p>
+                    <button onclick="toggleText1()" id="button1"
+                    class="mt-3 px-5 py-2 text-abu underline">Read
+                    more</button>
+                </div>
+                <div class="mb-12 p-4 md:w-1/2 group">
+                    <div class="rounded-md shadow-md overflow-hidden add ">
+                        <img src="public/img/1c.jpeg" alt="jembatan" width="w-full" class="group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <h3 class="font-semibold text-haikal mt-5 mb-3 dark:text-white">jembatan.</h3>
+                    <p class="font-semibold text-base text-abu">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, molestiae! Porro, cupiditate.</p>
+                </div>
+                <div class="mb-12 p-4 md:w-1/2 group">
+                    <div class="rounded-md shadow-md overflow-hidden add">
+                        <img src="public/img/1d.jpeg" alt="setup" width="w-full" class="group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <h3 class="font-semibold text-haikal mt-5 mb-3 dark:text-white">setup.</h3>
+                    <p class="font-semibold text-base text-abu">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, molestiae! Porro, cupiditate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--galery end-->
+
+   
+    <!--jadwal satart-->
+    <section id="jadwal" class="pt-36 pb-40 dark:bg-slate-500 ">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-2xl font-bold mb-10 flex justify-center text-prim">Jadwal Pelajaran</h2>
+            <div class="mb-4 justify-center flex">
+                <button id="minggu1" class="bg-transparent mr-4 text-yellow-300 px-4 py-2 rounded cursor-pointer hover:bg-yellow-300 hover:text-white font-bold focus:outline-none focus:ring focus:border-green-500">Blok 1</button>
+                <button id="minggu2" class="bg-transparent mr-4  text-green-600 px-4 py-2 rounded cursor-pointer  hover:bg-green-600 hover:text-white font-bold focus:outline-none focus:ring focus:border-green-500">Blok 2</button>
+                <button id="minggu3" class=" ml-4 bg-transparent text-blue-400 px-4 py-2 rounded cursor-pointer hover:bg-blue-400 hover:text-white font-bold focus:outline-none focus:ring focus:border-green-500">Piket</button>
+            </div>
+            <div id="jadwal" class="mb-4">
+                    <ul class="sm:mx-auto lg:mx-auto ml-10 mr-10 text-yellow-300 minggu1">
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Senin</span>
+                                <span class="text-black dark:text-white cursor-pointer" >Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white ">
+                                <span>UPACARA</span>
+                                <span>07.00 - 07.45</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MP/35/66</span>
+                                <span>07.45 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MP/35/66</span>
+                                <span>08.30 - 09.15</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MP/35/66</span>
+                                <span>09.15 - 10.00</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>10.00 - 10.20</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MP/35/66 </span>
+                                <span>10.20 - 11.05</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MP/35/66 </span>
+                                <span>11.05 - 11.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT DZUHUR</span>
+                                <span>11.50 - 12.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MP/35/66 </span>
+                                <span>12.30 - 13.15</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MP/35/66 </span>
+                                <span>13.15 - 14.00</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MP/35/66 </span>
+                                <span>14.00 - 14.45</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>BK/10/66</span>
+                                <span>14.45 - 15.30</span>
+                            </div>
+                        </li>
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center ">
+                                <span>Selasa</span>
+                                <span class="text-black dark:text-white cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>Penguatan Pendidikan karakter</span>
+                                <span>07.00 - 07.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PKK/04/Mjd</span>
+                                <span>07.50 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PKK/04/Mjd</span>
+                                <span>08.30 - 09.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PKK/04/Mjd</span>
+                                <span>09.10 - 09.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>09.50 - 10.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PKK/04/Mjd</span>
+                                <span>10.10 - 10.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PKK/04/Mjd</span>
+                                <span>10.50 - 11.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PKK/04/Mjd</span>
+                                <span>11.30 - 12.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT DZUHUR</span>
+                                <span>12.10 - 12.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PKK/04/Mjd</span>
+                                <span>12.50 - 13.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PKK/04/Mjd</span>
+                                <span>13.30 - 14.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INGG/43/28 </span>
+                                <span>14.10 - 14.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INGG/43/28 </span>
+                                <span>14.50 - 15.30</span>
+                            </div>
+                        </li>
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Rabu</span>
+                                <span class="text-black dark:text-white  cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>Penguatan Pendidikan Karakter</span>
+                                <span>07.00 - 07.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INDO/12/27</span>
+                                <span>07.50 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INDO/12/27</span>
+                                <span>08.30 - 09.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INDO/12/27</span>
+                                <span>09.10 - 09.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>09.50 - 10.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INDO/12/27</span>
+                                <span>10.10 - 10.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INDO/12/27</span>
+                                <span>10.50 - 11.30 </span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INDO/12/27</span>
+                                <span>11.30 12.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT DZUHUR</span>
+                                <span>12.10 - 12.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PAI/18/66</span>
+                                <span>12.50 - 13.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PAI/18/66</span>
+                                <span>13.30 - 14.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PAI/18/66</span>
+                                <span>14.10 - 14.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PAI/18/66</span>
+                                <span>14.50 - 15.30</span>
+                            </div>
+                        </li>
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Kamis</span>
+                                <span class="text-black dark:text-white cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>Penguatan Pendidikan Karakter</span>
+                                <span>07.00 - 07.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PANCASILA/37/35</span>
+                                <span>07.50 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PANCASILA/37/35</span>
+                                <span>08.30 - 09.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INDO/12/35</span>
+                                <span>09.10 - 09.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>09.50 - 10.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INDO/12/35</span>
+                                <span>10.10 - 10.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MTK/34/26</span>
+                                <span>10.50 - 11.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MTK/34/26</span>
+                                <span>11.30 - 12.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT DZUHUR</span>
+                                <span>12.10 - 12.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MTK/34/26</span>
+                                <span>12.50 - 13.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MTK/34/26</span>
+                                <span>13.30 - 14.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MTK/34/26</span>
+                                <span>14.10 - 14.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>MTK/34/26</span>
+                                <span>14.50 - 15.30</span>
+                            </div>
+                        </li>
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Jumat</span>
+                                <span class="text-black dark:text-white  cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PENGUATAN PENDIDIKAN KARAKTER</span>
+                                <span>07.00 - 07.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INGG/43/02</span>
+                                <span>07.50 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INGG/43/02</span>
+                                <span>08.30 - 09.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INGG/43/02</span>
+                                <span>09.10 - 09.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>09.50 - 10.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>B.INGG/43/02</span>
+                                <span>10.10 - 10.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PAI/18/02 </span>
+                                <span>10.50 - 11.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT JUMAT</span>
+                                <span>11.30 - 12.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PAI/18/02 </span>
+                                <span>12.50 - 13.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PAI/18/02 </span>
+                                <span>13.30 - 14.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PAI/18/02 </span>
+                                <span>14.10 - 14.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>BK/10 </span>
+                                <span>14.50 - 15.30</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="text-green-400 sm:mx-auto hidden lg:mx-auto ml-10 mr-10 minggu2">
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Senin</span>
+                                <span class="text-black dark:text-white cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white ">
+                                <span>UPACARA</span>
+                                <span>07.00 - 07.45</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>07.45 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>08.30 - 09.15</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>09.15 - 10.00</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>10.00 - 10.20</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>10.20 - 11.05</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>11.05 - 11.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT DZUHUR</span>
+                                <span>11.50 - 12.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/35</span>
+                                <span>12.30 - 13.15</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/35</span>
+                                <span>13.15 - 14.00</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/35</span>
+                                <span>14.00 - 14.45 </span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/35</span>
+                                <span>14.45 - 15.30</span>
+                            </div>
+                        </li>
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Selasa</span>
+                                <span class="text-black dark:text-white cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>Penguatan Pendidikan karakter</span>
+                                <span>07.00 - 07.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>07.50 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>08.30 - 09.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>09.10 - 09.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>09.50 - 10.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>10.10 - 10.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>10.50 - 11.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>11.30 - 12.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT DZUHUR</span>
+                                <span>12.10 - 12.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>12.50 - 13.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>13.30 - 14.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>14.10 - 14.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>14.50 - 15.30</span>
+                            </div>
+                        </li>
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Rabu</span>
+                                <span class="text-black dark:text-white cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>Penguatan Pendidikan karakter</span>
+                                <span>07.00 - 07.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>07.50 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>08.30 - 09.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>09.10 - 09.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>09.50 - 10.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>10.10 - 10.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>10.50 - 11.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>11.30 - 12.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT DZUHUR</span>
+                                <span>12.10 - 12.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PLD/49</span>
+                                <span>12.50 - 13.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PLD/49</span>
+                                <span>13.30 - 14.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PLD/49</span>
+                                <span>14.10 - 14.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>PLD/49</span>
+                                <span>14.50 - 15.30</span>
+                            </div>
+                        </li>
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Kamis</span>
+                                <span class="text-black dark:text-white cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>Penguatan Pendidikan karakter</span>
+                                <span>07.00 - 07.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>07.50 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>08.30 - 09.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>09.10 - 09.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>09.50 - 10.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>10.10 - 10.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>10.50 - 11.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>11.30 - 12.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT DZUHUR</span>
+                                <span>12.10 - 12.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>12.50 - 13.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>13.30 - 14.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>14.10 - 14.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>14.50 - 15.30</span>
+                            </div>
+                        </li>
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Jumat</span>
+                                <span class="text-black dark:text-white cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>Penguatan Pendidikan karakter</span>
+                                <span>07.00 - 07.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>07.50 - 08.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>08.30 - 09.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>09.10 - 09.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT PERTAMA</span>
+                                <span>09.50 - 10.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>10.10 - 10.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>10.50 - 11.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>11.30 - 12.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>ISTIRAHAT KEDUA / SHALAT JUMAT</span>
+                                <span>12.10 - 12.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>12.50 - 13.30</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>13.30 - 14.10</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>14.10 - 14.50</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                                <span>KK/07</span>
+                                <span>14.50 - 15.30</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="text-blue-400 sm:mx-auto hidden lg:mx-auto ml-10 mr-10 minggu3">
+                        <li class="flex flex-col border-b py-2">
+                            <div class="flex justify-between items-center">
+                                <span>Senin</span>
+                                <span class="text-black dark:text-white
+                                 cursor-pointer">Buka</span>
+                            </div>
+                            <div class="jadwal-detail ml-4 text-black dark:text-white">
+                            <span>Biologi</span>
+                            <span>08:00 - 09:30</span>
+                        </div>
+                    </li>
+                    <li class="flexflex-col border-b py-2">
+                        <div class="flex justify-between items-center">
+                            <span>Selasa</span>
+                            <span class="text-black dark:text-white cursor-pointer">Buka</span>
+                        </div>
+                        <div class="jadwal-detail ml-4 text-black dark:text-white">
+                            <span>Fisika</span>
+                            <span>10:00 - 11:30</span>
+                        </div>
+                    </li>
+                </ul>
+                    <!-- Tambahkan informasi jadwal lainnya untuk Minggu 2 dengan class "minggu2" -->
+            </div>
+        </div>
+    </section>
+
+    <!--jadwal end-->
+
+    <!--contact start-->
+    <footer id="contact" class="bg-haikal pt-24 pb-12">
+        <div class="container">
+            <div class="flex flex-wrap">
+                <div class="w-full px-4 mb-12 text-slate-300 font-medium md:w-1/3">
+                    <h2 class="font-bold text-4xl text-white mb-5">XII TJKT 3</h2>
+                    <h3 class="font-bold text-2xl mb-2">Naman sekolah</h3>
+                    <p>SMKN NEGRI 1 GUNUNG SINDUR</p>
+                    <p>Jln.SMPN 3 Gunungsindur, Gunungsindur, Kabupaten Bogor, Jawa Barat, 16340</p>
+                    <p>Indonesia</p>
+                </div>
+                <div class="w-full px-4 mb-12 md:w-1/3">
+                    <h3 class="font-semibold text-xl text-white mb-5">Kategori tulisan</h3>
+                    <ul class="text-slate-300">
+                        <li>
+                            <a href="#" class="inline-block text-base hover:text-prim mb-3">Galery</a>
+                        </li>
+                        <li>
+                            <a href="#" class="inline-block text-base hover:text-prim mb-3">Teknologi</a>
+                        </li>
+                        <li>
+                            <a href="#" class="inline-block text-base hover:text-prim mb-3">Jaringan</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-full px-4 mb-12 md:w-1/3">
+                    <h3 class="font-semibold text-xl text-white mb-5">Tautan</h3>
+                    <ul class="text-slate-300">
+                        <li>
+                            <a href="#home" class="inline-block text-base hover:text-prim mb-3">Beranda</a>
+                        </li>
+                        <li>
+                            <a href="#about" class="inline-block text-base hover:text-prim mb-3">Tentang saya</a>
+                        </li>
+                        <li>
+                            <a href="#Members" class="inline-block text-base hover:text-prim mb-3">Members</a>
+                        </li>
+                        <li>
+                            <a href="#My Galery" class="inline-block text-base hover:text-prim mb-3">My Galery</a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="inline-block text-base hover:text-prim mb-3">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="w-full pt-10 border-t border-slate-700">
+                <div class="flex items-center justify-center mb-5">
+                    <!--instagram start-->
+                    <a href="https://Instagram.com/muf_ti129" target="_blank" class="w-9 h-9 mr-3 rounded-full flex  justify-center items-center border text-slate-300 border-white hover:border-violet-700 hover:bg-violet-700 hover:text-white bg-white dark:hover:bg-violet-700">
+                        <svg class="full-current " role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                    </a>
+                </div>
+                <p class="font-medium text-xs text-slate-500 text-center">Dibuat oleh <a href="https://Instagram.com/muf_ti129" target="_blank" class="font-bold text-violet-600">Tubagus Mufti</a>, Menggunakan <a href="https://html.com" target="_blank" class="font-bold text-orange-600">html</a>, <a href="https://tailwindcss.com" target="_blank" class="font-bold text-sky-500">Tailwind CSS</a>, <a href="https://javascript.com" target="_blank" class="font-bold text-yellow-400">javascript</a>. </p>
+            </div>
+        </div>
+    </footer>
+    <!--contact end-->
+
+    <!--back home start-->
+   <a href="#" class="fixed bottom-4 right-4 z-[9999] hidden h-10 w-10 items-center justify-center rounded-full bg-prim p-4 hover:animate-pulse" id="to-top">^</a>
+    <!--back home end-->
+
+<script src="public/script.js"></script>
+ <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+</body>
+</html>
